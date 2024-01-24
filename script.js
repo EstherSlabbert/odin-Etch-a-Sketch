@@ -24,9 +24,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // RGB values for the starting color white
+    let r = 255;
+    let g = 255;
+    let b = 255;
+    // darkens colors while sketching
     function draw(e) {
         if (e.type === "mouseenter") {
-            e.target.classList.add("hover");
+            // decreases RGB values by 10%
+            r = Math.max(0, r - 25.5);
+            g = Math.max(0, g - 25.5);
+            b = Math.max(0, b - 25.5);
+            e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         }
     }
 
@@ -44,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     resetButton.addEventListener('click', () => {
+        r = 255;
+        g = 255;
+        b = 255;
         const gridItems = document.querySelectorAll(".grid-item.hover");
         gridItems.forEach((item) => {
             item.classList.remove("hover");
