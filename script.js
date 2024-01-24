@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const resetButton = document.getElementById('reset');
 
     function createGrid(rowLength) {
-        container.innerHTML = ''
-        let gridItemSize = 960 / rowLength
+        container.innerHTML = '';
+        let gridItemSize = 960 / rowLength;
 
         for (let i = 0; i < rowLength; i++) {
             for (let j = 0; j < rowLength; j++) {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        const gridItems = document.querySelectorAll(".grid-item")
+        const gridItems = document.querySelectorAll(".grid-item");
 
         for (var i = 0; i < gridItems.length; i++) {
             gridItems[i].style.width = gridItemSize + 'px';
@@ -30,13 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    createGrid(16);
+    createGrid(16); // initial grid size is 16 by 16
 
     setGridSizeButton.addEventListener('click', () => {
         let rowLength;
 
         do {
-            rowLength = prompt("Row length for the square grid (integer between 0 and 100):", "row length")
+            rowLength = prompt("Row length of squares for the grid (integer between 0 and 100):",
+             "Number of squares across")
         } while (isNaN(rowLength) || rowLength <= 0 || rowLength > 100 || !Number.isInteger(Number(rowLength)))
 
         createGrid(rowLength);
