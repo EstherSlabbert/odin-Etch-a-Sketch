@@ -24,9 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // randomizes colors while sketching
     function draw(e) {
         if (e.type === "mouseenter") {
-            e.target.classList.add("hover");
+            const r = Math.floor(Math.random() * 256)
+            const g = Math.floor(Math.random() * 256)
+            const b = Math.floor(Math.random() * 256)
+            e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
         }
     }
 
@@ -44,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     resetButton.addEventListener('click', () => {
-        const gridItems = document.querySelectorAll(".grid-item.hover");
+        const gridItems = document.querySelectorAll(".grid-item");
         gridItems.forEach((item) => {
-            item.classList.remove("hover");
-        });
+            item.style.backgroundColor = ''; // removes background color of all grid-items
+        })
     })
 })
